@@ -3,12 +3,12 @@ const app = express()
 const port = process.env.PORT || 3000
 
 
-const othersRouter = require("./router/others.route")
-const usersRouter = require("./router/users.router")
-const authRouter = require("./router/auth.router")
-const categoriesRouter = require("./router/categories.router")
-const productsRouter = require("./router/products.router")
-const contactsRouter = require("./router/contacts.router")
+const othersRouter = require("./routers/others.route")
+const usersRouter = require("./routers/users.router")
+const authRouter = require("./routers/auth.router")
+const categoriesRouter = require("./routers/categories.router")
+const productsRouter = require("./routers/products.router")
+const contactsRouter = require("./routers/contacts.router")
 
 
 app.get("/", othersRouter)
@@ -70,18 +70,3 @@ app.use("/contact", contactsRouter)
 
 
 app.listen(port, console.log(`Le serveur écoute sur le port ${port}`))
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
