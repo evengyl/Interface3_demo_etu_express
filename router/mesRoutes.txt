@@ -11,6 +11,7 @@ Users (je veux exposé au web, des utilisateurs)
 
 Products
     Créer l'api suivante ! 
+    
 
     localhost:3000/api/products/        --> get all
     localhost:3000/api/products/:id     --> get one by id
