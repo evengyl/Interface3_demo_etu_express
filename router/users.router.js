@@ -3,7 +3,7 @@ const router = express.Router()
 
 
 // localhost:3000/api/users/       -->GET all users (récupérer tout les users)
-router.get("/", (req, res) => {
+router.get("/",(req, res) => {
     res.json({
         message : "Liste de tous les users"
     })
@@ -42,7 +42,6 @@ router.delete("/:id", (req, res) => {
         message : "Suppression d'un user"
     })
 })
-
 
 
 module.exports = router
