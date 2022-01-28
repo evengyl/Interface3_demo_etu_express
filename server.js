@@ -3,7 +3,16 @@ const app = express()
 const port = process.env.PORT || 3000
 
 
+const othersRouter = require("./router/others.route")
 const usersRouter = require("./router/users.router")
+const authRouter = require("./router/auth.router")
+const categoriesRouter = require("./router/categories.router")
+const productsRouter = require("./router/products.router")
+const contactsRouter = require("./router/contacts.router")
+
+
+app.get("/", othersRouter)
+
 
 /* Match router pour :
     localhost:3000/api/users/       -->GET all users (récupérer tout les users)
@@ -20,5 +29,59 @@ const usersRouter = require("./router/users.router")
 app.use("/api/users", usersRouter) // utilise le middleware use du routage
 
 
+/*
+    localhost:3000/api/categories/          --> get all
+    localhost:3000/api/categories/:idProd   --> get one by id
+    localhost:3000/api/categories/          --> post categories
+    localhost:3000/api/categories/:idProd   --> put / patch categories on product
+    localhost:3000/api/categories/:idProd   --> delete one categories on product
+*/
+app.use("/api/categories", categoriesRouter)
+
+
+/*
+    localhost:3000/api/products/            --> get all
+    localhost:3000/api/products/:id         --> get one by id
+    localhost:3000/api/products/            --> post product
+    localhost:3000/api/products/:id         --> put / patch product
+    localhost:3000/api/products/:id         --> delete one product
+*/
+app.use("/api/products", productsRouter)
+
+
+
+
+
+app.use("/api/auth", authRouter)
+
+
+/*
+    function use("chaine de caractère", Router){
+        ajoute a express, toutes vos routes
+    }
+*/
+
+/*
+    localhost:3000/contact     -> get de la page contact (formulaire)
+    localhost:3000/contact      -> post du formulaire (envoi du formulaire)
+*/
+app.use("/contact", contactsRouter)
+
+
 
 app.listen(port, console.log(`Le serveur écoute sur le port ${port}`))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
