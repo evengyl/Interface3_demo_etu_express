@@ -1,6 +1,13 @@
 const express = require("express")
 const app = express()
 const port = process.env.PORT || 3000
+const db = require("./models/dbConnect")
+db.connect()
+console.log("db connectée")
+
+
+app.use(express.json())
+app.use(express.urlencoded({extended : true}))
 
 
 const othersRouter = require("./routers/others.route")
