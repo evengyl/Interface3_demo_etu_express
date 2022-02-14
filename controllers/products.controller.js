@@ -52,12 +52,24 @@ exports.postProduct = (req, res) => {
 
 
 exports.putProduct = (req, res) => {
-    
+    let id = req.params.id
+    let name = req.body.name
+    let price = req.body.price
+
+    db.then((connection) => {
+        connection.query("update products set name = ?, price = ? where id = ?", [name, price, id]).then((result) => {
+            res.json(result)
+        })
+    })
 }
 
 
 exports.deleteProduct = (req, res) => {
-    res.json({
-        message : "Produit bien supprimé"
+    let id = req.params.id
+
+    db.then((connection) => {
+        connection.query("delete from products where id = ?", [id]).then((result) => {
+            res.json(result)
+        })
     })
 }
